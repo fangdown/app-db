@@ -53,3 +53,8 @@ export const updateGzhAuthorModel = (data: IGzhAuthor) => {
   const { username, ...rest } = data;
   return GzhAuthor.update(rest, { where: { username } });
 };
+
+
+export const findGzhAuthorListModel = () => {
+  return GzhAuthor.findAndCountAll();
+};

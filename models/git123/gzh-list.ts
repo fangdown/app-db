@@ -19,6 +19,7 @@ export const GzhAuthorList = sequelize.define(
       type:Sequelize.STRING(50),
       primaryKey: true,
     },
+    nickname: Sequelize.STRING(50),
     title: Sequelize.STRING(255),
     content_url: Sequelize.STRING(255),
     cover: Sequelize.STRING(255),
@@ -38,6 +39,7 @@ GzhAuthorList.sync({ force: false });
 export interface IGzhAuthorList {
   gid:string
   username:string;
+  nickname:string;
   title: string;
   content_url: string;
   cover: string;
@@ -47,24 +49,32 @@ export interface IGzhAuthorList {
   author: string;
 }
 // 向表中插入数据
-export const addGzhAuthorListModel = async (data: IGzhAuthorList) => {
+export const addGzhAuthorArticleModel = async (data: IGzhAuthorList) => {
   // console.log('data', data)
-  const res = await findGzhAuthorListModel(data.gid)
+  const res = await findGzhAuthorArticleModel(data.gid)
   if(res){
-   return updateGzhAuthorListModel(data)
+   return updateGzhAuthorArticleModel(data)
   }
   return GzhAuthorList.create(data);
   
 };
 
-// 查询主键id
-export const findGzhAuthorListModel = (gid: string) => {
+// 查询文章
+export const findGzhAuthorArticleModel = (gid: string) => {
   console.log('gid', gid)
   return GzhAuthorList.findOne({ where: { gid } });
 };
 
 // 更新
-export const updateGzhAuthorListModel = (data: IGzhAuthorList) => {
+export const updateGzhAuthorArticleModel = (data: IGzhAuthorList) => {
   const { gid, ...rest } = data;
   return GzhAuthorList.update(rest, { where: { gid } });
+};
+
+// 根据用户名查询文章列表
+export const findGzhAuthorMsgModel = (username:string) => {
+  return GzhAuthorList.findAndCountAll({
+    where: { username },
+    order: [['datetime', 'DESC']]
+  });
 };
