@@ -2,8 +2,14 @@
   "name": "app-db",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "prepublishOnly": "npm run compile",
+    "compile": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
