@@ -1,7 +1,7 @@
 /**
  * 公众号文章列表
  */
-import sequelize from '../../config/mysql-git123';
+const sequelize= require('./index')
 const Sequelize = require('sequelize');
 export const GzhAuthorList = sequelize.define(
   'gzh_author_list',
