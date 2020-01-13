@@ -1,18 +1,20 @@
 
 import sequelizeInit from '../../config/mysql-git123';
+import * as config from 'fd-config';
+
+const mysql = config.get('mysql-git123')  
 // 初始化数据库
-let sequelize = ''
-export const init = (options:Record<string, any>) => {
-  const {dbname, username,password, host, port } = options
-  sequelize= sequelizeInit({
+export const init = () => {
+  const {dbname, username,password, host, port } = mysql
+  const sequelize= sequelizeInit({
     dbname,
     username,
     password,
     host,
     port
   })
+  return sequelize
 }
 export * from './gzh-author'
 export * from './gzh-list'
 
-export default sequelize

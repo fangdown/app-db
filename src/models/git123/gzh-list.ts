@@ -1,7 +1,7 @@
 /**
  * 公众号文章列表
  */
-const sequelize= require('./index')
+const sequelize= require('./index').init()
 const Sequelize = require('sequelize');
 export const GzhAuthorList = sequelize.define(
   'gzh_author_list',

@@ -1,14 +1,7 @@
 /**
  * 公众号作者
  */
-// import sequelizeInit from '../../config/mysql-git123';
-// const sequelize= sequelizeInit({
-//   dbname: 'git123',
-//   username: 'root',
-//   password: 'Fang@674123',
-//   host: 'cdb-5gawn72i.bj.tencentcdb.com',
-//   port: 10064
-// })
+const sequelize= require('./index').init()
 const Sequelize = require('sequelize');
 export const GzhAuthor = sequelize.define(
   'gzh_author',
