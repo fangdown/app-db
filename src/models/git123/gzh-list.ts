@@ -53,7 +53,7 @@ export const addGzhAuthorArticleModel = async (data: IGzhAuthorList) => {
   // console.log('data', data)
   const res = await findGzhAuthorArticleModel(data.gid)
   if(res){
-   return updateGzhAuthorArticleModel(data)
+   return true
   }
   return GzhAuthorList.create(data);
   
