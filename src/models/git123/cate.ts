@@ -54,6 +54,11 @@ export const updateCateModel = (data: ICate) => {
   return Cate.update(rest, { where: { id } });
 };
 
+// 删除
+export const deleteCateModel = (id:string) => {
+  return Cate.destroy({ where: { id } });
+};
+
 // 列表
 export const findCateListModel = () => {
   return Cate.findAndCountAll(

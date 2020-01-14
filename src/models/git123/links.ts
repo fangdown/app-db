@@ -52,7 +52,10 @@ export const updateLinksModel = (data: ILinks) => {
   const { id, ...rest } = data;
   return Links.update(rest, { where: { id } });
 };
-
+// 删除
+export const deleteLinksModel = (id:string) => {
+  return Links.destroy({ where: { id } });
+};
 // 列表
 export const findLinksListModel = () => {
   return Links.findAndCountAll(
