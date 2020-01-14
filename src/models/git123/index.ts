@@ -17,4 +17,6 @@ export const init = () => {
 }
 export * from './gzh-author'
 export * from './gzh-list'
+export * from './cate'
+export * from './links'
 
