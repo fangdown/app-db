@@ -28,8 +28,8 @@ Links.sync({ force: false });
 export interface ILinks {
   id?:string
   name:string;
-  icon: string;
-  order: string;
+  value: string;
+  cate: string;
 }
 // 向表中插入数据
 export const addLinksModel = async (data: ILinks) => {
@@ -57,7 +57,7 @@ export const updateLinksModel = (data: ILinks) => {
 export const findLinksListModel = () => {
   return Links.findAndCountAll(
     {
-      order: [['order', 'DESC']]
+      order: [['updated_at', 'DESC']]
     }
   );
 };
