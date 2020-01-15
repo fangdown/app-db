@@ -3,6 +3,8 @@
  */
 const sequelize= require('./index').init()
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 export const Cate = sequelize.define(
   'cate',
   {
@@ -55,15 +57,15 @@ export const updateCateModel = (data: ICate) => {
 };
 
 // 删除
-export const deleteCateModel = (id:string) => {
-  return Cate.destroy({ where: { id } });
+export const deleteCateModel = (ids:Array<any>) => {
+  return Cate.destroy({ where: { id: { [Op.in]: ids } } });
 };
 
 // 列表
 export const findCateListModel = () => {
   return Cate.findAndCountAll(
     {
-      order: [['order', 'DESC']]
+      order: [['order', 'ASC']]
     }
   );
 };
